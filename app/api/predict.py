@@ -30,12 +30,11 @@ class Item(BaseModel):
 @router.post('/predict')
 async def predict(item: Item):
     """
-    Make random baseline predictions for classification problem 🔮
-
+    Eventually, this bad boy is going to predict Kickstarter success
     ### Request Body
-    - `x1`: positive float
-    - `x2`: integer
-    - `x3`: string
+    - `Fundraising Goal`: positive float
+    - `Fundraising Timeline`: integer
+    - `Description of the Project`: string
 
     ### Response
     - `prediction`: boolean, at random
@@ -49,6 +48,7 @@ async def predict(item: Item):
     log.info(X_new)
     y_pred = random.choice([True, False])
     y_pred_proba = random.random() / 2 + 0.5
+    #This is the JSON we will pass on to the front end
     return {
         'prediction': y_pred,
         'probability': y_pred_proba
